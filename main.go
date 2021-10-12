@@ -35,7 +35,15 @@ func articlesIndexHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func articlesStoreHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprint(w, "创建新的文章")
+	if err := r.ParseForm(); err != nil {
+		// 解析错误，这里应该有错误处理
+		fmt.Fprint(w, "请提供正确的数据！")
+		return
+	}
+
+	title := r.FormValue("title")
+
+	fmt.Fprintf(w, "title 的值为: %v <br>", title)
 }
 
 func forceHTMLMiddleware(next http.Handler) http.Handler {
