@@ -13,7 +13,7 @@ func ValidateRegistrationForm(data user.User) map[string][]string {
 		"name":             []string{"required", "alpha_num", "between:3,20"},
 		"email":            []string{"required", "min:4", "max:30", "email"},
 		"password":         []string{"required", "min:6"},
-		"password_confirm": []string{"requred"},
+		"password_confirm": []string{"required"},
 	}
 
 	// 2. 定制错误消息

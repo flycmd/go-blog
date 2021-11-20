@@ -19,7 +19,7 @@ func (*AuthController) Register(w http.ResponseWriter, r *http.Request) {
 
 // DoRegister 处理注册逻辑
 func (*AuthController) DoRegister(w http.ResponseWriter, r *http.Request) {
-	// 1. 表单验证
+	// 1. 初始化数据
 	_user := user.User{
 		Name:            r.PostFormValue("name"),
 		Email:           r.PostFormValue("email"),
@@ -27,7 +27,7 @@ func (*AuthController) DoRegister(w http.ResponseWriter, r *http.Request) {
 		PasswordConfirm: r.PostFormValue("password_confirm"),
 	}
 
-	// 2. 表单验证
+	// 2. 表单规则
 	errs := requests.ValidateRegistrationForm(_user)
 
 	if len(errs) > 0 {
